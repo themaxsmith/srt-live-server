@@ -57,7 +57,7 @@ int CSLSPusherManager::connect_all()
 	for (int i = 0; i < m_sri->m_upstreams.size(); i ++) {
 		char szURL[1024] = {0};
 		const char *szTmp = m_sri->m_upstreams[i].c_str();
-		sprintf(szURL, "srt://%s/%s", szTmp, m_stream_name);
+		sprintf(szURL, "srt://%s/?streamid=#!::r=%s,m=publish", szTmp, m_stream_name);
 		ret = connect(szURL);
 		if (SLS_OK != ret) {
 		    CSLSLock lock(&m_rwclock, true);
