@@ -57,7 +57,7 @@ int CSLSPusherManager::connect_all()
 	int all_ret = SLS_OK;
 	for (int i = 0; i < m_sri->m_upstreams.size(); i ++) {
 		char szURL[1024] = {0};
-		std::replace(m_stream_name.begin(), m_stream_name.end(), ',', '&');
+		std::replace(m_stream_name, m_stream_name + strlen(m_stream_name), ',', '&');
 
 		const char *szTmp = m_sri->m_upstreams[i].c_str();
 		sprintf(szURL, "srt://%s/?streamid=#!::r=%s,m=publish", szTmp, m_stream_name);
